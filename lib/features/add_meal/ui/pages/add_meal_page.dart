@@ -16,50 +16,55 @@ class AddMealPage extends GetView<AddMealController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Add Meal',
-          style: AppTextStyles.font18BoldText(context),
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        controller.resetResources();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Add Meal',
+            style: AppTextStyles.font18BoldText(context),
+          ),
         ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-          child: Form(
-            key: controller.formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LabelFormField(
-                    label: 'Meal Name',
-                    controller: controller.nameController,
-                    validator: ValidationHelper.empty,
-                  ),
-                  const VerticalSpace(35),
-                  LabelFormField(
-                    label: 'Meal Calories',
-                    controller: controller.caloriesController,
-                    keyboardType: TextInputType.number,
-                    validator: ValidationHelper.empty,
-                  ),
-                  const VerticalSpace(35),
-                  Text(
-                    'Add Photo',
-                    style: AppTextStyles.font14BoldText(context),
-                  ),
-                  const VerticalSpace(6),
-                  const ImageCard(),
-                  const VerticalSpace(50),
-                  AppDefaultButton(
-                    text: 'Save Meal',
-                    onPressed: () {
-                      controller.addMeal();
-                    },
-                  ),
-                ],
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            child: Form(
+              key: controller.formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    LabelFormField(
+                      label: 'Meal Name',
+                      controller: controller.nameController,
+                      validator: ValidationHelper.empty,
+                    ),
+                    const VerticalSpace(35),
+                    LabelFormField(
+                      label: 'Meal Calories',
+                      controller: controller.caloriesController,
+                      keyboardType: TextInputType.number,
+                      validator: ValidationHelper.empty,
+                    ),
+                    const VerticalSpace(35),
+                    Text(
+                      'Add Photo',
+                      style: AppTextStyles.font14BoldText(context),
+                    ),
+                    const VerticalSpace(6),
+                    const ImageCard(),
+                    const VerticalSpace(50),
+                    AppDefaultButton(
+                      text: 'Save Meal',
+                      onPressed: () {
+                        controller.addMeal();
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

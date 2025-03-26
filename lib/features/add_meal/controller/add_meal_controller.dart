@@ -55,10 +55,9 @@ class AddMealController extends GetxController {
     update();
   }
 
-  @override
-  void onClose() {
+  resetResources() {
+    image = null;
     nameController.clear();
     caloriesController.clear();
-    super.onClose();
   }
 }
