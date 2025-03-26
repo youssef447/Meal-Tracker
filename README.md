@@ -7,6 +7,6 @@
 - to delete user can long press any card and he starts selecting meals 
 
 ## Responsiveness
-used Screen util to make design adapted on any app size.
+used Screen util to make design adapted to any app size.
 
 
