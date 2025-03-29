@@ -49,7 +49,7 @@ class YouTubePlayerPageState extends State<YouTubePlayerPage> {
       setState(() => _isLoading = false);
     } catch (e) {
       setState(() {
-        _errorMessage = 'Failed to load video: ${e.toString()}';
+        _errorMessage = 'Failed to load video';
         _isLoading = false;
       });
     }

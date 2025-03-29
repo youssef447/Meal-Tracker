@@ -73,9 +73,7 @@ class AppFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40.h,
-      child: TextFormField(
+    return  TextFormField(
         textDirection: textDirection,
         textInputAction: TextInputAction.done,
         keyboardType: keyboardType,
@@ -135,7 +133,7 @@ class AppFormField extends StatelessWidget {
         style: AppTextStyles.fieldStyle(context),
         obscureText: isObscureText ?? false,
         validator: validator,
-      ),
+      
     );
   }
 }

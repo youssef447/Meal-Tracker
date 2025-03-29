@@ -9,7 +9,7 @@
 
 
 ## Apk
-- https://github.com/youssef447/Meal-Tracker/releases/tag/0.0.1
+- https://github.com/youssef447/Meal-Tracker/releases/tag/v1.0.0
 
 ## Tools/frameworks : Flutter, dart, Getx state management, SQFLITE
 ## How to run:

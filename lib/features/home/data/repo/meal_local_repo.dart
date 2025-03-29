@@ -20,13 +20,13 @@ class MealLocalRepo with ErrorHandlerMixen {
     });
   }
 
-  Future addMeal(MealModel model) async {
+  Future<Either<Failure, void>> addMeal(MealModel model) async {
     return handleDatabaseErrors(() async {
       await mealLocalService.saveMeal(model.toMap());
     });
   }
 
-  Future deleteMeal(int id) async {
+  Future<Either<Failure, void>> deleteMeal(int id) async {
     return handleDatabaseErrors(() async {
       await mealLocalService.deleteMeal(id);
     });

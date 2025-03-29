@@ -27,7 +27,7 @@ abstract class AppResultDialog {
             if (Navigator.of(AppContext.getContext!, rootNavigator: true)
                 .canPop()) {
               Navigator.of(AppContext.getContext!, rootNavigator: true).pop();
-              //callback?.call();
+              callback?.call();
             }
           });
           return Dialog(

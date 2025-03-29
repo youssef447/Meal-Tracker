@@ -14,7 +14,8 @@ class HomeSearchField extends GetView<HomeSearchController> {
 
   @override
   Widget build(BuildContext context) {
-    return AppFormField(
+    return SizedBox(
+      height: 40.h,child: AppFormField(
       enabled: enabled,
       controller: controller.searchController,
       onChanged: (value) {
@@ -24,7 +25,7 @@ class HomeSearchField extends GetView<HomeSearchController> {
       suffixIcon: Icon(
         Icons.search,
         size: 20.sp,
-      ),
+      ),),
     );
   }
 }
