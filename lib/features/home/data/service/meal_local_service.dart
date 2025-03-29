@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class MealService {
+class MealLocalService {
   final String _dbName = "MealDatabase.db";
 
   final String _mealTableName = "Meals";

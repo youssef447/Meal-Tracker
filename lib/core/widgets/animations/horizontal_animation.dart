@@ -49,7 +49,7 @@ class SlideAnimationState extends State<SlideAnimation>
         curve: Curves.ease,
       ),
     );
-    Future.delayed(Duration(milliseconds: (500 * widget.delay).round()))
+    Future.delayed(Duration(milliseconds: (500 + widget.delay).round()))
         .then((value) {
       controller.forward();
     });

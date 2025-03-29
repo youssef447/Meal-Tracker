@@ -28,7 +28,7 @@ class ImageCard extends StatelessWidget {
                       backgroundColor: Colors.white,
                       child: CircleAvatar(
                         radius: 19.r,
-                        backgroundColor: AppColors.background,
+                        backgroundColor: AppColors.background(context),
                         child: Icon(
                           Icons.add,
                           color: AppColors.primary,

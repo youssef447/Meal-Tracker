@@ -4,10 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 abstract class AppTheme {
+  static const Color _darkBackground = Color(0xff081028);
+  static const Color _background = Color(0Xffe6edf5);
   static ThemeData darkTheme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: AppColors.darkBackground,
+    scaffoldBackgroundColor: _darkBackground,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.darkBackground,
+      backgroundColor: _darkBackground,
       scrolledUnderElevation: 0,
       centerTitle: true,
     ),
@@ -27,28 +29,23 @@ abstract class AppTheme {
         Colors.transparent,
       ),
     ),
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
+    colorScheme: const ColorScheme.dark(
       primary: AppColors.primary,
-      surface: AppColors.darkBackground,
+      surface: _darkBackground,
 
       onPrimary: Colors.white, // Text/icon color on primary
-      surfaceContainer: const Color(0xff0b1739),
+      surfaceContainer: Color(0xff0b1739),
     ),
     textTheme: TextTheme(
       displayLarge: GoogleFonts.aBeeZee(color: Colors.white),
       displayMedium: GoogleFonts.cairo(color: Colors.white),
-      displaySmall: GoogleFonts.cairo(color: Colors.white),
-      headlineLarge: GoogleFonts.cairo(color: Colors.white),
-      headlineMedium: GoogleFonts.cairo(color: Colors.white),
-      headlineSmall: GoogleFonts.aBeeZee(color: Colors.white),
     ),
   );
 
   static ThemeData lightTheme = ThemeData.light().copyWith(
-    scaffoldBackgroundColor: AppColors.background,
+    scaffoldBackgroundColor: _background,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.background,
+      backgroundColor: _background,
       scrolledUnderElevation: 0,
       centerTitle: true,
     ),
@@ -72,15 +69,10 @@ abstract class AppTheme {
       primary: AppColors.primary,
       surface: Color(0xff081028),
       onPrimary: Colors.white, // Text/icon color on primary
-      surfaceContainer: Color(0xff0b1739),
     ),
     textTheme: TextTheme(
       displayLarge: GoogleFonts.aBeeZee(color: Colors.black),
       displayMedium: GoogleFonts.cairo(color: Colors.black),
-      displaySmall: GoogleFonts.cairo(color: Colors.black),
-      headlineLarge: GoogleFonts.cairo(color: Colors.black),
-      headlineMedium: GoogleFonts.cairo(color: Colors.black),
-      headlineSmall: GoogleFonts.aBeeZee(color: Colors.black),
     ),
   );
 }

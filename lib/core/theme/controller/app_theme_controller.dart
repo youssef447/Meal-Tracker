@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
-import 'package:meal_tracking/core/services/app_cache_service.dart';
-import 'package:meal_tracking/core/theme/data/app_colors.dart';
+import 'package:meal_tracking/core/services/local/app_cache_service.dart';
 
 import '../data/app_theme.dart';
 
@@ -33,18 +32,15 @@ class AppThemeController extends GetxController {
   }
 
   Future<void> setPlatformColors() async {
+    await FlutterStatusbarcolor.setStatusBarColor(
+        currentTheme.scaffoldBackgroundColor);
+    await FlutterStatusbarcolor.setNavigationBarColor(
+      currentTheme.scaffoldBackgroundColor,
+    );
     if (isDark) {
-      await FlutterStatusbarcolor.setStatusBarColor(AppColors.darkBackground);
-      await FlutterStatusbarcolor.setNavigationBarColor(
-        AppColors.darkBackground,
-      );
-
       FlutterStatusbarcolor.setNavigationBarWhiteForeground(true);
       FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     } else {
-      await FlutterStatusbarcolor.setNavigationBarColor(AppColors.background);
-      await FlutterStatusbarcolor.setStatusBarColor(AppColors.background);
-
       FlutterStatusbarcolor.setNavigationBarWhiteForeground(false);
       FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
     }

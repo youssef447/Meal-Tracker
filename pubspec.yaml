@@ -67,6 +67,15 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   # Dropdown
   dropdown_button2: ^2.3.9
+  # Api
+  dio: ^5.8.0+1
+  # Loading
+  shimmer: ^3.0.0
+  # video player
+  better_player_plus: ^1.0.8
+  # extract youtube meta data
+  youtube_explode_dart: ^2.3.10
+  cached_network_image: ^3.4.1
 
 
 flutter_launcher_icons:
@@ -77,7 +86,8 @@ flutter_launcher_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+dependency_overrides:
+  intl: any
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

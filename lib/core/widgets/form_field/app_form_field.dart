@@ -73,67 +73,69 @@ class AppFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      textDirection: textDirection,
-      textInputAction: TextInputAction.done,
-      keyboardType: keyboardType,
-      expands: expands ?? false,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      onTap: onTap,
-      controller: controller,
-      onChanged: onChanged,
-      minLines: minLines,
-      maxLines: maxLines,
-      readOnly: readOnly ?? false,
-      enabled: enabled,
-      maxLength: maxLength,
-      textAlignVertical: TextAlignVertical.center,
-      textAlign: textAlign ?? TextAlign.start,
-      cursorColor: AppColors.primary,
-      decoration: InputDecoration(
-        helperText: helperText,
-        hintStyle: AppTextStyles.font14RegularText(context)
-            .copyWith(color: Colors.grey),
-        isCollapsed: collapsed ?? true,
-        errorStyle: AppTextStyles.font14RegularText(context)
-            .copyWith(color: Colors.red),
-        labelText: labelText,
-        contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.w),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: BorderSide.none,
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: showBorder ?? false
-            ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.r),
-                borderSide: BorderSide.none,
-              )
-            : InputBorder.none,
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(
-            color: Colors.red,
+    return SizedBox(
+      height: 40.h,
+      child: TextFormField(
+        textDirection: textDirection,
+        textInputAction: TextInputAction.done,
+        keyboardType: keyboardType,
+        expands: expands ?? false,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        onTap: onTap,
+        controller: controller,
+        onChanged: onChanged,
+        minLines: minLines,
+        maxLines: maxLines,
+        readOnly: readOnly ?? false,
+        enabled: enabled,
+        maxLength: maxLength,
+        textAlignVertical: TextAlignVertical.center,
+        textAlign: textAlign ?? TextAlign.start,
+        cursorColor: AppColors.primary,
+        decoration: InputDecoration(
+          helperText: helperText,
+          hintStyle: AppTextStyles.hintStyle(context),
+          isCollapsed: collapsed ?? true,
+          errorStyle: AppTextStyles.font14RegularText(context)
+              .copyWith(color: Colors.red),
+          labelText: labelText,
+          contentPadding: contentPadding ??
+              EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.w),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: BorderSide.none,
           ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(
-            color: Colors.red,
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: BorderSide.none,
           ),
+          enabledBorder: showBorder ?? false
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                  borderSide: BorderSide.none,
+                )
+              : InputBorder.none,
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(
+              color: Colors.red,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(
+              color: Colors.red,
+            ),
+          ),
+          hintText: hintText,
+          fillColor: backGroundColor ?? AppColors.primary.withOpacity(0.1),
+          filled: true,
+          suffixIcon: suffixIcon,
         ),
-        hintText: hintText,
-        fillColor: Colors.white,
-        filled: true,
+        style: AppTextStyles.fieldStyle(context),
+        obscureText: isObscureText ?? false,
+        validator: validator,
       ),
-      style:
-          AppTextStyles.font14BoldText(context).copyWith(color: Colors.black),
-      obscureText: isObscureText ?? false,
-      validator: validator,
     );
   }
 }

@@ -12,9 +12,9 @@ class AppCircleProgress extends StatelessWidget {
       child: SizedBox(
         width: 70.h,
         height: 70.h,
-        child: const CircularProgressIndicator(
+        child: CircularProgressIndicator(
           //valueColor: AlwaysStoppedAnimation<Color>(AppColors.secondaryPrimary),
-          backgroundColor: AppColors.background,
+          backgroundColor: AppColors.background(context),
           strokeWidth: 2.0,
           color: AppColors.primary,
         ),

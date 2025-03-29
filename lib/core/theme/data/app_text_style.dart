@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppTextStyles {
-  static TextStyle font20BoldText(BuildContext context) => Theme.of(context)
-      .textTheme
-      .displayLarge!
-      .copyWith(fontSize: 20.sp, fontWeight: FontWeight.bold);
+  static TextStyle font20BoldABeeZeeText(BuildContext context) =>
+      Theme.of(context)
+          .textTheme
+          .displayLarge!
+          .copyWith(fontSize: 20.sp, fontWeight: FontWeight.bold);
   static TextStyle font18BoldText(BuildContext context) => Theme.of(context)
       .textTheme
       .displayMedium!
@@ -18,10 +19,19 @@ abstract class AppTextStyles {
       .textTheme
       .displayMedium!
       .copyWith(fontSize: 14.sp, fontWeight: FontWeight.bold);
+
+  static TextStyle fieldStyle(BuildContext context) => Theme.of(context)
+      .textTheme
+      .displayMedium!
+      .copyWith(fontSize: 14.sp, fontWeight: FontWeight.bold);
   static TextStyle font14RegularText(BuildContext context) => Theme.of(context)
       .textTheme
       .displayMedium!
       .copyWith(fontSize: 14.sp, fontWeight: FontWeight.normal);
+  static TextStyle hintStyle(BuildContext context) =>
+      Theme.of(context).textTheme.displayMedium!.copyWith(
+          fontSize: 14.sp, fontWeight: FontWeight.w100, color: Colors.grey);
+
   static TextStyle font12BoldText(BuildContext context) => Theme.of(context)
       .textTheme
       .displayMedium!

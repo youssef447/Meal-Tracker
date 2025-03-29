@@ -1,4 +1,4 @@
-part of '../../pages/home_page.dart';
+part of '../../../pages/home_page.dart';
 
 class CalenderFilter extends StatelessWidget {
   const CalenderFilter({
@@ -28,15 +28,20 @@ class CalenderFilter extends StatelessWidget {
                 headerStyle: HeaderStyle(
                   headerPadding: EdgeInsets.zero,
                   decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: AppColors.button,
-                      ),
-                      borderRadius: BorderRadius.circular(8.r)),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: AppColors.button,
+                    ),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
                   formatButtonTextStyle: AppTextStyles.font14BoldText(context)
                       .copyWith(color: Colors.black),
                   titleCentered: true,
+                  leftChevronPadding:
+                      EdgeInsets.symmetric(horizontal: 6.w, vertical: 8.h),
+                  rightChevronPadding:
+                      EdgeInsets.symmetric(horizontal: 6.w, vertical: 8.h),
                 ),
                 availableCalendarFormats: {CalendarFormat.month: 'Month'.tr},
               ),

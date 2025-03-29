@@ -1,4 +1,4 @@
-part of '../../pages/home_page.dart';
+part of '../../../pages/home_page.dart';
 
 class HomeFloatingButton extends StatelessWidget {
   const HomeFloatingButton({super.key});
@@ -12,10 +12,11 @@ class HomeFloatingButton extends StatelessWidget {
         description: '  Add your first meal',
         child: FloatingActionButton(
           onPressed: () {
-            if (controller.showCheckboxes &&
-                controller.checkBoxes.values
-                    .any((element) => element == true)) {
+            if (controller.checkBoxes.values
+                .any((element) => element == true)) {
               controller.deleteMeals();
+            } else if (controller.showCheckboxes) {
+              controller.toggkeCheckBoxes();
             } else {
               context.navigate(AppRoutes.addMeal);
             }

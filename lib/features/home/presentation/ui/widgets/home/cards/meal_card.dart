@@ -1,4 +1,4 @@
-part of '../../pages/home_page.dart';
+part of '../../../pages/home_page.dart';
 
 class MealCard extends StatelessWidget {
   final MealModel model;
@@ -22,7 +22,21 @@ class MealCard extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.r),
-                    border: Border.all(color: Colors.white)),
+                    border: Border.all(color: Colors.transparent),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).colorScheme.inverseSurface,
+                        offset: const Offset(0, 2),
+                        blurRadius: 1,
+                        blurStyle: BlurStyle.outer,
+                      ),
+                      BoxShadow(
+                        color: Theme.of(context).colorScheme.inverseSurface,
+                        offset: const Offset(1, 2),
+                        blurRadius: 1,
+                        blurStyle: BlurStyle.outer,
+                      ),
+                    ]),
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,44 +68,31 @@ class MealCard extends StatelessWidget {
                             style: AppTextStyles.font14BoldText(context),
                           ),
                           const VerticalSpace(8),
-                          Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16.w, vertical: 7.h),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(7.r),
-                              gradient: const LinearGradient(
-                                colors: AppColors.button,
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                            ),
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: model.calories.toStringAsFixed(0),
-                                      children: [
-                                        TextSpan(
-                                          text: ' Kcal',
-                                          style: AppTextStyles.font12BoldText(
-                                                  context)
-                                              .copyWith(
-                                            color: const Color.fromARGB(
-                                                255, 160, 2, 2),
-                                          ),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: model.calories!.toStringAsFixed(0),
+                                    children: [
+                                      TextSpan(
+                                        text: ' Kcal',
+                                        style: AppTextStyles.font12BoldText(
+                                                context)
+                                            .copyWith(
+                                          color: const Color.fromARGB(
+                                              255, 160, 2, 2),
                                         ),
-                                      ]),
-                                ],
-                                style: AppTextStyles.font12BoldText(context),
-                              ),
+                                      ),
+                                    ]),
+                              ],
+                              style: AppTextStyles.font12RegularText(context),
                             ),
                           ),
                           const VerticalSpace(6),
                           Align(
                             alignment: AlignmentDirectional.centerEnd,
                             child: Text(
-                              DateFormatHelper.formatDate(model.time),
+                              DateFormatHelper.formatDate(model.time!),
                               style: AppTextStyles.font12RegularText(context),
                             ),
                           ),

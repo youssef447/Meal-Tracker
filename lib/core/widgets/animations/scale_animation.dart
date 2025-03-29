@@ -18,7 +18,7 @@ class ScaleAnimation extends StatefulWidget {
 }
 
 class ScaleAnimationState extends State<ScaleAnimation>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late AnimationController controller;
   late Animation<double> scaleAnimation, fadeAnimation;
   @override
@@ -59,6 +59,7 @@ class ScaleAnimationState extends State<ScaleAnimation>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FadeTransition(
       opacity: fadeAnimation,
       child: ScaleTransition(
@@ -67,4 +68,8 @@ class ScaleAnimationState extends State<ScaleAnimation>
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

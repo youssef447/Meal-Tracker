@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
 import 'package:lottie/lottie.dart';
 import 'package:meal_tracking/core/helpers/app_context.dart';
-import 'package:meal_tracking/core/theme/controller/app_theme_controller.dart';
 import 'package:meal_tracking/core/theme/data/app_colors.dart';
 
 import '../../assets/app_assets.dart';
@@ -25,17 +24,16 @@ abstract class AppResultDialog {
         ),
         pageBuilder: (_, __, ___) {
           Future.delayed(const Duration(seconds: 3), () {
-            if (Navigator.of(AppContext.getContext!).canPop()) {
+            if (Navigator.of(AppContext.getContext!, rootNavigator: true)
+                .canPop()) {
               Navigator.of(AppContext.getContext!, rootNavigator: true).pop();
-              callback?.call();
+              //callback?.call();
             }
           });
           return Dialog(
             clipBehavior: Clip.none,
             insetPadding: EdgeInsets.zero,
-            backgroundColor: Get.find<AppThemeController>().isDark
-                ? AppColors.darkBackground
-                : AppColors.background,
+            backgroundColor: AppColors.background(AppContext.getContext),
             elevation: 0,
             shadowColor: Colors.transparent,
             child: Padding(
@@ -98,9 +96,7 @@ abstract class AppResultDialog {
           return Dialog(
             clipBehavior: Clip.none,
             insetPadding: EdgeInsets.zero,
-            backgroundColor: Get.find<AppThemeController>().isDark
-                ? AppColors.darkBackground
-                : AppColors.background,
+            backgroundColor: AppColors.background(AppContext.getContext),
             elevation: 0,
             shadowColor: Colors.transparent,
             child: Padding(

@@ -7,6 +7,7 @@ import 'package:meal_tracking/core/theme/controller/app_theme_controller.dart';
 import 'package:meal_tracking/core/theme/data/app_text_style.dart';
 
 import '../../assets/app_assets.dart';
+import '../../helpers/app_context.dart';
 import '../../theme/data/app_colors.dart';
 
 class AppDropdown extends StatelessWidget {
@@ -86,9 +87,7 @@ class AppDropdown extends StatelessWidget {
             padding: EdgeInsets.zero,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
-              color: Get.find<AppThemeController>().isDark
-                  ? AppColors.darkBackground
-                  : AppColors.background,
+              color: AppColors.background(AppContext.getContext),
             ),
           ),
           /*  hint: Text(

@@ -3,32 +3,26 @@ import 'dart:typed_data';
 class MealModel {
   int? id;
   String name;
-  DateTime time;
-  double calories;
+  String? youtubeUrl;
+  String? instructions;
+  String? category;
+  List<String> tags;
+  DateTime? time;
+  double? calories;
   Uint8List? image;
+  String? networkImage;
   MealModel({
     this.id,
     required this.name,
-    required this.time,
-    required this.calories,
+    this.time,
+    this.calories,
+    this.category,
     this.image,
+    this.tags = const [],
+    this.youtubeUrl,
+    this.instructions,
+    this.networkImage,
   });
-
-  MealModel copyWith({
-    int? id,
-    String? name,
-    DateTime? time,
-    double? calories,
-    Uint8List? image,
-  }) {
-    return MealModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      time: time ?? this.time,
-      calories: calories ?? this.calories,
-      image: image ?? this.image,
-    );
-  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,6 +40,16 @@ class MealModel {
       time: DateTime.parse(map['time'] as String),
       calories: map['calories'] as double,
       image: map['image'] as Uint8List,
+    );
+  }
+  factory MealModel.fromRemoteMap(Map map) {
+    return MealModel(
+      id: map['idMeal'] != null ? int.parse(map['idMeal'] as String) : null,
+      name: map['strMeal'] as String,
+      networkImage: map['strMealThumb'] as String?,
+      category: map['strCategory'] as String?,
+      instructions: map['strInstructions'] as String?,
+      youtubeUrl: map['strYoutube'] as String?,
     );
   }
 }

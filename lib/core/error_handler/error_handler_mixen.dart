@@ -1,15 +1,18 @@
+import 'package:dartz/dartz.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'failure.dart';
 
 mixin ErrorHandlerMixen {
-  Future<T> handleDatabaseErrors<T>(Future<T> Function() operation) async {
+  Future<Either<Failure, T>> handleDatabaseErrors<T>(
+      Future<T> Function() operation) async {
     try {
-      return await operation();
+      final res = await operation();
+      return Right(res);
     } on DatabaseException catch (e) {
-      throw ServiceFailure.fromSqflite(e);
-    } on Exception catch (e) {
-      throw ServiceFailure('Unexpected error: ${e.toString()}');
+      return Left(ServiceFailure.fromSqflite(e));
+    } catch (e) {
+      return Left(ServiceFailure('Unexpected error: ${e.toString()}'));
     }
   }
 }

@@ -5,16 +5,16 @@ import 'package:meal_tracking/core/widgets/loading/loading_dialog.dart';
 import 'package:meal_tracking/features/home/enums/sort_enum.dart';
 import 'package:showcaseview/showcaseview.dart';
 
-import 'package:meal_tracking/core/services/app_cache_service.dart';
+import 'package:meal_tracking/core/services/local/app_cache_service.dart';
 import 'package:meal_tracking/features/home/data/model/meal_model.dart';
-import 'package:meal_tracking/features/home/data/repo/meal_repo.dart';
+import 'package:meal_tracking/features/home/data/repo/meal_local_repo.dart';
 
 import '../../../../core/helpers/app_context.dart';
 
 class HomePageController extends GetxController {
-  final MealRepo mealRepo;
+  final MealLocalRepo mealLocalRepo;
   HomePageController({
-    required this.mealRepo,
+    required this.mealLocalRepo,
   });
   @override
   void onInit() async {
@@ -27,11 +27,13 @@ class HomePageController extends GetxController {
   List<MealModel> allMeals = [];
   Map<int, bool> checkBoxes = {};
   bool loading = true;
+
   Future getMeals() async {
-    final result = await mealRepo.getMeals();
+    final result = await mealLocalRepo.getMeals();
     loading = false;
     result.fold((fail) {
       Get.snackbar('Error', fail.message);
+      update();
     }, (r) {
       allMeals = r;
       //deep copy
@@ -49,7 +51,7 @@ class HomePageController extends GetxController {
 
     for (var entry in checkBoxes.entries) {
       if (entry.value) {
-        final result = await mealRepo.deleteMeal(entry.key);
+        final result = await mealLocalRepo.deleteMeal(entry.key);
         result.fold((fail) {
           Get.snackbar('Error', fail.message);
           return;
@@ -78,6 +80,7 @@ class HomePageController extends GetxController {
       checkBoxes[item.id!] = false;
     }
   }
+
   //-------- Showcase --------//
 
   final GlobalKey<State> showcaseTheme = GlobalKey<State>();
@@ -102,13 +105,13 @@ class HomePageController extends GetxController {
   filterMeals(DateTime date) {
     selectedDate = date;
     for (var meal in filteredmeals) {
-      if (meal.time.year == date.year && meal.time.month == date.month) {
+      if (meal.time!.year == date.year && meal.time!.month == date.month) {
         return;
       }
     }
     filteredmeals = allMeals
         .where((meal) =>
-            meal.time.year == date.year && meal.time.month == date.month)
+            meal.time!.year == date.year && meal.time!.month == date.month)
         .toList();
     filterchanged = true;
 
@@ -131,10 +134,10 @@ class HomePageController extends GetxController {
         filteredmeals.sort((a, b) => a.name.compareTo(b.name));
         break;
       case SortEnum.time:
-        filteredmeals.sort((a, b) => a.time.compareTo(b.time));
+        filteredmeals.sort((a, b) => a.time!.compareTo(b.time!));
         break;
       case SortEnum.calories:
-        filteredmeals.sort((a, b) => a.calories.compareTo(b.calories));
+        filteredmeals.sort((a, b) => a.calories!.compareTo(b.calories!));
         break;
     }
     filterchanged = true;
